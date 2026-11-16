@@ -43,7 +43,7 @@ Without solving the recurrence, look closely at the recursive calls and the comb
 
 The recursion tree is a binary tree because each non-base-case call makes two recursive calls. Ignoring rounding, the first few levels have the following subproblem sizes:
 
-![Hand-drawn recursion tree showing subproblem sizes n, n/3, 2n/3, n/9, 2n/9, 2n/9, and 4n/9](images/recursion-tree.jpg)
+![Hand-drawn recursion tree showing subproblem sizes n, n/3, 2n/3, n/9, 2n/9, 2n/9, and 4n/9](images/recursion-tree-upright.jpg)
 
 The tree is skewed toward the larger, right-hand subproblems rather than evenly balanced. Following a left branch reduces the input size to one third, while following a right branch reduces it to two thirds. Therefore, paths that repeatedly take the right branch require more recursive calls to reach a base case, so the leaves occur at different depths. At each node with input size $m$, the combine loop performs $\Theta(m)$ work.
 
