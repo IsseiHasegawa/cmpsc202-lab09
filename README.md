@@ -100,8 +100,16 @@ Each successive level's work bound is $3/4$ of the previous level's bound. At th
 
 1. During lecture last week, we looked at two different divide-and-conquer algorithms. What were these algorithms and what problems did they solve?
 
+   The two algorithms were **merge sort** and the **2D nearest-neighbors (closest-pair) algorithm**.
 
+   Merge sort solves the sorting problem: it puts the elements of an array in order. It divides the array into two roughly equal halves, recursively sorts each half, and merges the sorted halves.
 
-
+   The nearest-neighbors algorithm finds the pair of points with the smallest distance among $n$ points in the plane. It splits the points into two roughly equal halves, recursively finds the closest pair in each half, and checks a narrow strip near the dividing line for a closer pair that crosses the split.
 
 2. How do the algorithms you analyzed in this lab compare to the ones we discussed in lecture? Specifically, each algorithm differs from the two we discussed in lecture in one important way. For each of the algorithms above, what is that difference?
+
+   Both lecture algorithms make two recursive calls on roughly equal halves and combine their results in linear time.
+
+   In **Exercise 1**, the main difference is the unequal split: the subproblem sizes are approximately $n/3$ and $2n/3$, instead of $n/2$ and $n/2$. There are still two recursive calls and a linear-time combine step, but some paths in the recursion tree are deeper than others.
+
+   In **Exercise 2**, the recurrence has **three** recursive calls of size $n/2$, instead of two. It also uses a quadratic nonrecursive-work bound, $cn^2$, instead of a linear bound. Thus, both the number of recursive calls and the nonrecursive-work term differ from the lecture examples.
