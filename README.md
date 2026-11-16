@@ -63,10 +63,36 @@ where $c$ is a positive constant.
 Analyze the running time of the algorithm by unrolling the recursion tree. Specifically, answer the following questions:
 
 1. **Root Work:** Find the amount of work done at the root level (level $0$) of the recursion tree.
+
+   The root contains one problem of size $n$, so its nonrecursive work is at most
+
+   $$W_0 \leq cn^2.$$
+
 2. **First Levels:** Find the amount of work done at level $1$ and level $2$ of the recursion tree.
+
+   At level $1$, there are $3$ subproblems, each of size $n/2$. The total nonrecursive work at this level is at most
+
+   $$W_1 \leq 3c\left(\frac{n}{2}\right)^2 = \frac{3}{4}cn^2.$$
+
+   At level $2$, there are $3^2 = 9$ subproblems, each of size $n/4$. The total nonrecursive work at this level is at most
+
+   $$W_2 \leq 9c\left(\frac{n}{4}\right)^2 = \frac{9}{16}cn^2.$$
+
 3. **Tree Height:** Find the height of the recursion tree (at what level does the input size reach $1$?).
 
+   Assume $n$ is a power of $2$ so that the divisions are exact. At level $h$, each subproblem has size $n/2^h$. The base case is reached when
+
+   $$\frac{n}{2^h} = 1 \quad \Longrightarrow \quad h = \log_2 n.$$
+
+   Therefore, the tree has height $\log_2 n$ and $\log_2 n + 1$ levels, counting the root as level $0$.
+
 **Bonus!** Find a general formula for the total work done at level $i$ of the recursion tree.
+
+At level $i$, there are $3^i$ subproblems, each of size $n/2^i$. Thus, the total work at that level is bounded by
+
+$$W_i \leq 3^i c\left(\frac{n}{2^i}\right)^2 = cn^2\left(\frac{3}{4}\right)^i, \qquad 0 \leq i \leq \log_2 n.$$
+
+Each successive level's work bound is $3/4$ of the previous level's bound. At the leaf level, each subproblem has size $1$ and costs at most $c$, so the same formula applies. These are upper bounds because the given recurrence uses $\leq$.
 
 ---
 
