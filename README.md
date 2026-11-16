@@ -41,6 +41,12 @@ The two recursive calls process subarrays of sizes approximately $n/3$ and $2n/3
 ### Part B: Visualizing Algorithm Behavior
 Without solving the recurrence, look closely at the recursive calls and the combine step. If you were to draw the recursion tree for this algorithm, what would it look like? Is the tree balanced or skewed? 
 
+The recursion tree is a binary tree because each non-base-case call makes two recursive calls. Ignoring rounding, the first few levels have the following subproblem sizes:
+
+![Hand-drawn recursion tree showing subproblem sizes n, n/3, 2n/3, n/9, 2n/9, 2n/9, and 4n/9](images/recursion-tree.jpg)
+
+The tree is skewed toward the larger, right-hand subproblems rather than evenly balanced. Following a left branch reduces the input size to one third, while following a right branch reduces it to two thirds. Therefore, paths that repeatedly take the right branch require more recursive calls to reach a base case, so the leaves occur at different depths. At each node with input size $m$, the combine loop performs $\Theta(m)$ work.
+
 ---
 
 ## Exercise 2: Unrolling the Recursion Tree
