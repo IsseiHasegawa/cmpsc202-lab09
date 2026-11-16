@@ -2,7 +2,7 @@
 
 **Instructions:** Work in small groups to complete the following exercises. Try sketching out your work on the whiteboards or scratch paper. Everyone should submit their own answers to the exercises, but you are encouraged to discuss your reasoning with your group members.
 
-Name(s): ___________________________
+Name(s): Issei Hasegawa
 
 ---
 
@@ -29,6 +29,14 @@ Procedure Mystery(A, n)
 
 ### Part A: The Recurrence Relation
 Let $T(n)$ be the running time of `Mystery` on an input of size $n$. Write down a recurrence relation for the worst-case running time $T(n)$. You may assume $n$ is a power of 3 for simplicity. *(Note: You do not need to solve the recurrence relation yet, just formulate it).*
+
+Ignoring rounding, the intended recurrence is
+
+$$T(n) = T\left(\frac{n}{3}\right) + T\left(\frac{2n}{3}\right) + \Theta(n),$$
+
+with constant-time base cases, including $T(1) = \Theta(1)$.
+
+The two recursive calls process subarrays of sizes approximately $n/3$ and $2n/3$. The combine loop runs $n$ times and performs constant-time work in each iteration, so its total cost is $\Theta(n)$. The remaining nonrecursive operations take constant time.
 
 ### Part B: Visualizing Algorithm Behavior
 Without solving the recurrence, look closely at the recursive calls and the combine step. If you were to draw the recursion tree for this algorithm, what would it look like? Is the tree balanced or skewed? 
